@@ -12,7 +12,7 @@
   "author": "@zizzamia",
   "license": "MIT",
   "dependencies": {
-    "@coinbase/onchainkit": "0.1.5",
+    "@coinbase/onchainkit": "^0.1.5",
     "next": "13.5.6"
   },
   "devDependencies": {
