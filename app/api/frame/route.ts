@@ -2,7 +2,7 @@ import { getFrameAccountAddress } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
-  let accountAddress = '';
+  let accountAddress: string | undefined = '';
   try {
     const body: { trustedData?: { messageBytes?: string } } = await req.json();
     accountAddress = await getFrameAccountAddress(body, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
