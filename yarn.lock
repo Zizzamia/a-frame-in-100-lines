@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@adraffy/ens-normalize/-/ens-normalize-1.10.0.tgz#d2a39395c587e092d77cbbc80acf956a54f38bf7"
   integrity sha512-nA9XHtlAkYfJxY7bce8DcN7eKxWWCWkU+1GR9d+U6MbNpfwQp8TI7vqOsBsMcHoT4mBu2kypKoSKnghEzOOq5Q==
 
-"@coinbase/onchainkit@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@coinbase/onchainkit/-/onchainkit-0.1.6.tgz#2866b8c4eb05b0cd0d4910063cde93237bfdf424"
-  integrity sha512-FerVWA4wsbCIT0E87djcA/5LmMVaaE83XdeT2CW+VG0H4D+drong2kdRVI9XKcEu7dupEjRyJjTMTtB9kuAjLw==
+"@coinbase/onchainkit@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@coinbase/onchainkit/-/onchainkit-0.2.0.tgz#df2c157241583e7240bbe8891a31b9221b1a0385"
+  integrity sha512-P8ayLmbGNYF3H3Ds4WqTpbyRZx2FscHapdTQGk13+33ytSjNG19cwRvR/zCdbpiJsB3Asm/GrVxzQDyUbTQuRw==
   dependencies:
     "@ethersproject/abstract-signer" "^5.7.0"
     "@farcaster/fishery" "^2.2.3"
