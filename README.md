@@ -13,7 +13,11 @@ import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
 
 const frameMetadata = getFrameMetadata({
-  buttons: ['Next image'],
+  buttons: [
+    {
+      label: 'We love BOAT',
+    },
+  ],
   image: 'https://zizzamia.xyz/park-1.png',
   post_url: 'https://zizzamia.xyz/api/frame',
 });
@@ -60,16 +64,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ### `app/api/frame/route.ts`
 
 ```ts
-import { FrameRequest, getFrameAccountAddress } from '@coinbase/onchainkit';
+import { FrameRequest, getFrameAccountAddress, getFrameMessage } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
-  try {
-    const body: FrameRequest = await req.json();
-    accountAddress = await getFrameAccountAddress(body, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
-  } catch (err) {
-    console.error(err);
+  const body: FrameRequest = await req.json();
+  const { isValid, message } = await getFrameMessage(body);
+  if (isValid) {
+    try {
+      accountAddress = await getFrameAccountAddress(message, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return new NextResponse(`<!DOCTYPE html><html><head>
