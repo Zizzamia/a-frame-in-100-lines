@@ -7,6 +7,7 @@ Have fun! ⛵️
 ## Files
 
 ### `app/page.tsx`
+
 ```tsx
 import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
@@ -40,6 +41,7 @@ export default function Page() {
 ```
 
 ### `app/layout.tsx`
+
 ```tsx
 export const viewport = {
   width: 'device-width',
@@ -56,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```
 
 ### `app/api/frame/route.ts`
+
 ```ts
 import { FrameRequest, getFrameAccountAddress } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
