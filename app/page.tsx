@@ -7,8 +7,8 @@ const frameMetadata = getFrameMetadata({
       label: 'We love BOAT',
     },
   ],
-  image: 'https://zizzamia.xyz/park-1.png',
-  post_url: 'https://zizzamia.xyz/api/frame',
+  image: '${process.env.NEXT_PUBLIC_URL}/park-1.png',
+  post_url: '${process.env.NEXT_PUBLIC_URL}/api/frame',
 });
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'zizzamia.xyz',
     description: 'LFG',
-    images: ['https://zizzamia.xyz/park-1.png'],
+    images: ['${process.env.NEXT_PUBLIC_URL}/park-1.png'],
   },
   other: {
     ...frameMetadata,
