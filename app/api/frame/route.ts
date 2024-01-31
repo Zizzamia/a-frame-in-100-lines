@@ -1,10 +1,14 @@
 import { FrameRequest, getFrameAccountAddress, getFrameMessage } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
+const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
+
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
+  
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body);
+
   if (isValid) {
     try {
       accountAddress = await getFrameAccountAddress(message, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
@@ -15,9 +19,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   return new NextResponse(`<!DOCTYPE html><html><head>
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="https://zizzamia.xyz/park-2.png" />
+    <meta property="fc:frame:image" content="${NEXT_PUBLIC_URL}/park-2.png" />
     <meta property="fc:frame:button:1" content="${accountAddress}" />
-    <meta property="fc:frame:post_url" content="https://zizzamia.xyz/api/frame" />
+    <meta property="fc:frame:post_url" content="${NEXT_PUBLIC_URL}/api/frame" />
   </head></html>`);
 }
 

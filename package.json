@@ -1,6 +1,6 @@
 {
   "name": "a-frame-in-100-lines",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "scripts": {
     "build": "rm -rf .next && next build",
     "dev": "next dev",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "@zizzamia",
+  "author": "https://twitter.com/Zizzamia",
   "license": "MIT",
   "dependencies": {
     "@coinbase/onchainkit": "0.3.0",
