@@ -117,6 +117,7 @@ export const dynamic = 'force-dynamic';
 ## The Team and Our Community ☁️ 🌁 ☁️
 
 A Farcaster Frame in 100 Lines is all about community. If you have any questions, feel free to reach out to the core maintainers on Twitter or through Farcaster.
+
 <table>
   <tbody>
     <tr>
