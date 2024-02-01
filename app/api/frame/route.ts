@@ -1,11 +1,16 @@
-import { FrameRequest, getFrameAccountAddress, getFrameMessage } from '@coinbase/onchainkit';
+import {
+  FrameRequest,
+  getFrameAccountAddress,
+  getFrameMessage,
+  getFrameHtmlResponse,
+} from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
 const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
-  
+
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body);
 
@@ -17,12 +22,17 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     }
   }
 
-  return new NextResponse(`<!DOCTYPE html><html><head>
-    <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="${NEXT_PUBLIC_URL}/park-2.png" />
-    <meta property="fc:frame:button:1" content="🌲 ${accountAddress} 🌲" />
-    <meta property="fc:frame:post_url" content="${NEXT_PUBLIC_URL}/api/frame" />
-  </head></html>`);
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          label: `🌊 ${accountAddress} 🌊`,
+        },
+      ],
+      image: `${NEXT_PUBLIC_URL}/park-2.png`,
+      post_url: `${NEXT_PUBLIC_URL}/api/frame`,
+    }),
+  );
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
