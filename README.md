@@ -66,12 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ### `app/api/frame/route.ts`
 
 ```ts
-import {
-  FrameRequest,
-  getFrameAccountAddress,
-  getFrameMessage,
-  getFrameHtmlResponse,
-} from '@coinbase/onchainkit';
+import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
 const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
@@ -80,21 +75,17 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
 
   const body: FrameRequest = await req.json();
-  const { isValid, message } = await getFrameMessage(body);
+  const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
   if (isValid) {
-    try {
-      accountAddress = await getFrameAccountAddress(message, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
-    } catch (err) {
-      console.error(err);
-    }
+    accountAddress = message.interactor.verified_accounts[0];
   }
 
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `🌊 ${accountAddress} 🌊`,
+          label: `🌲 ${accountAddress} 🌲`,
         },
       ],
       image: `${NEXT_PUBLIC_URL}/park-2.png`,
