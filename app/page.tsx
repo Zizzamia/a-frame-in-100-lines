@@ -14,10 +14,10 @@ const frameMetadata = getFrameMetadata({
 });
 
 export const metadata: Metadata = {
-  title: 'zizzamia.xyz',
+  title: 'testing.yup',
   description: 'LFG',
   openGraph: {
-    title: 'zizzamia.xyz',
+    title: 'testing.yup',
     description: 'LFG',
     images: [`${NEXT_PUBLIC_URL}/park-1.png`],
   },
