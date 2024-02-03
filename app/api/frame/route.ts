@@ -20,8 +20,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
           label: `🌲 ${accountAddress} 🌲`,
         },
       ],
-      image: `${NEXT_PUBLIC_URL}/park-2.png`,
-      post_url: `${NEXT_PUBLIC_URL}/api/frame`,
+      image: `https://spotify-gallery-00.vercel.app/ying_yang_mid.png`,
+      post_url: `https://spotify-gallery-00.vercel.app/api/frame`,
     }),
   );
 }

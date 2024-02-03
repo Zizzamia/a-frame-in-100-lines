@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'testing.yup',
     description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/park-1.png`],
+    images: [`https://spotify-gallery-00.vercel.app/waves_mid.png`],
   },
   other: {
     ...frameMetadata,
