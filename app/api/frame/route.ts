@@ -5,6 +5,7 @@ const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
+  let text: string | undefined = '';
 
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
@@ -12,12 +13,15 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
   }
+  if (body.untrustedData.inputText) {
+    text = body.untrustedData.inputText;
+  }
 
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `🌲 ${accountAddress} 🌲`,
+          label: `${text}`,
         },
       ],
       image: `${NEXT_PUBLIC_URL}/park-2.png`,

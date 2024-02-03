@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@coinbase/onchainkit@0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@coinbase/onchainkit/-/onchainkit-0.4.1.tgz#fa8e41f33786a411fd3ed1ebf8c4412b2fe63ab2"
-  integrity sha512-bXaIw8qyk8+9jLizF5clv9pb5u8p5rLAK/z09+Z0ZsHUHr3AS6Akhnp9VF0uQXWRDhFohbA/8ZCOcMKdt/Ad3g==
+"@coinbase/onchainkit@0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@coinbase/onchainkit/-/onchainkit-0.4.2.tgz#f52f6ae3d15565c927997d1d3c1d7bb8a0ff4bee"
+  integrity sha512-0R0ZmHPmjb5k7DBmBPn1zUXH2WjDHzMdVtoAG2Pc6C57QMAZnLzYCbHFZGBhGyyxn1e4E3f6MVyHucQXP285hw==
 
 "@next/env@13.5.6":
   version "13.5.6"
