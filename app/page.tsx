@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: 'testing.yup',
   description: 'LFG',
   openGraph: {
-    title: 'testing.yup',
+    title: 'mane to main',
     description: 'LFG',
     images: [`https://spotify-gallery-00.vercel.app/waves_mid.png`],
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>testing.yup</h1>
+      <h1>mane to main</h1>
     </>
   );
 }
