@@ -9,8 +9,8 @@ const frameMetadata = getFrameMetadata({
       label: 'Click Me',
     },
   ],
-  image: `${NEXT_PUBLIC_URL}/park-1.png`,
-  post_url: `${NEXT_PUBLIC_URL}/api/frame`,
+  image: `https://spotify-gallery-00.vercel.app/park-1.png`,
+  post_url: `https://spotify-gallery-00.vercel.app/api/frame`,
 });
 
 export const metadata: Metadata = {
