@@ -12,6 +12,12 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
+  // TODO: Use Neynar or Airstack to query and get closely related farcasters
+  // Maybe who are your top 5 friends 
+  // top channels you interact with
+  // Searching farcaster in there would be kinda funny
+  // you can now do dynamic searches
+  // LLM interactions
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
     button_2 = message.following as any;
