@@ -5,7 +5,7 @@ const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
-  let button_2: bool | undefined = '';
+  let button_2: string | undefined = '';
   let button_3: string | undefined = '';
   let button_4: string | undefined = '';
 
@@ -14,7 +14,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
-    button_2 = message.following;
+    button_2 = message.following as any;
   }
 
   return new NextResponse(
