@@ -4,15 +4,30 @@ Farcaster Frames in less than 100 lines, and ready to be deployed to Vercel.
 
 Have fun! ⛵️
 
-## Files
+<br />
+
+## App Routing files
+
+- app/
+  - redirect-frame/
+    - page.tsx
+  - config.ts
+  - layout.tsx
+  - page.tsx
+- api/
+  - frame/
+    - route.ts
+  - frame-redirect/
+    - route.ts
+
+<br />
 
 ### `app/page.tsx`
 
 ```tsx
 import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
-
-const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
+import { NEXT_PUBLIC_URL } from './config';
 
 const frameMetadata = getFrameMetadata({
   buttons: [
@@ -66,6 +81,50 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
+### `app/layout.tsx`
+```ts
+export const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
+```
+
+### `app/redirect-frame/page.tsx`
+```tsx
+import { getFrameMetadata } from '@coinbase/onchainkit';
+import type { Metadata } from 'next';
+import { NEXT_PUBLIC_URL } from '../config';
+
+const frameMetadata = getFrameMetadata({
+  buttons: [
+    {
+      label: 'Redirect to cute dog pictures',
+      action: 'post_redirect',
+    },
+  ],
+  image: `${NEXT_PUBLIC_URL}/park-1.png`,
+  post_url: `${NEXT_PUBLIC_URL}/api/frame-redirect`,
+});
+
+export const metadata: Metadata = {
+  title: 'zizzamia.xyz',
+  description: 'LFG',
+  openGraph: {
+    title: 'zizzamia.xyz',
+    description: 'LFG',
+    images: [`${NEXT_PUBLIC_URL}/park-1.png`],
+  },
+  other: {
+    ...frameMetadata,
+  },
+};
+
+export default function Page() {
+  return (
+    <>
+      <h1>zizzamia.xyz</h1>
+    </>
+  );
+}
+```
+
 ### `app/api/frame/route.ts`
 
 ```ts
@@ -109,9 +168,32 @@ export async function POST(req: NextRequest): Promise<Response> {
 export const dynamic = 'force-dynamic';
 ```
 
+### `app/api/frame-redirect/route.ts`
+
+```ts
+import { NextResponse } from 'next/server';
+
+async function getResponse(): Promise<NextResponse> {
+  return NextResponse.redirect(
+    'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+    { status: 302 },
+  );
+}
+
+export async function POST(): Promise<Response> {
+  return getResponse();
+}
+
+export const dynamic = 'force-dynamic';
+```
+
+<br />
+
 ## Resources
 
 - [Official Farcaster Frames docs](https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5)
+
+<br />
 
 ## The Team and Our Community ☁️ 🌁 ☁️
 
