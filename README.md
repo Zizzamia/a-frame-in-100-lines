@@ -21,6 +21,9 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: `${NEXT_PUBLIC_URL}/park-1.png`,
+  input: {
+    text: 'Tell me a boat story',
+  },
   post_url: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
@@ -73,6 +76,7 @@ const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
+  let text: string | undefined = '';
 
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
@@ -81,11 +85,15 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     accountAddress = message.interactor.verified_accounts[0];
   }
 
+  if (body?.untrustedData?.inputText) {
+    text = body.untrustedData.inputText;
+  }
+
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `🌲 ${accountAddress} 🌲`,
+          label: `Text: ${text}`,
         },
       ],
       image: `${NEXT_PUBLIC_URL}/park-2.png`,
