@@ -13,7 +13,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     accountAddress = message.interactor.verified_accounts[0];
   }
 
-  if (body?.untrustedData?.inputText) {
+  if (message?.input) {
     text = body.untrustedData.inputText;
   }
 
@@ -21,7 +21,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `Text: ${text}`,
+          label: `🌲 Text: ${text}`,
         },
       ],
       image: `${NEXT_PUBLIC_URL}/park-2.png`,
