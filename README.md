@@ -4,6 +4,10 @@ Farcaster Frames in less than 100 lines, and ready to be deployed to Vercel.
 
 Have fun! ⛵️
 
+Put your Frame to the test at https://warpcast.com/~/developers/frames.
+
+Don't forget to share your love for A Frame in 100 Lines on https://warpcast.com/zizzamia or https://twitter.com/Zizzamia
+
 <br />
 
 ## App Routing files
