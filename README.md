@@ -111,7 +111,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   }
 
   if (message?.input) {
-    text = body.untrustedData.inputText;
+    text = message.input;
   }
 
   if (message?.button === 2) {
@@ -125,7 +125,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `🌲 Text: ${message?.button} ${text}`,
+          label: `🌲 Text: ${text}`,
         },
       ],
       image: `${NEXT_PUBLIC_URL}/park-2.png`,
