@@ -15,16 +15,12 @@ Have fun! ⛵️
 ## App Routing files
 
 - app/
-  - redirect-frame/
-    - [page.tsx](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#appredirect-framepagetsx)
   - [config.ts](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#appconfigts)
   - [layout.tsx](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#applayouttsx)
   - [page.tsx](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#apppagetsx)
 - api/
   - frame/
     - [route.ts](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#appapiframeroutets)
-  - frame-redirect/
-    - [route.ts](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#appapiframe-redirectroutets)
 
 <br />
 
@@ -92,45 +88,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 export const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 ```
 
-### `app/redirect-frame/page.tsx`
-```tsx
-import { getFrameMetadata } from '@coinbase/onchainkit';
-import type { Metadata } from 'next';
-import { NEXT_PUBLIC_URL } from '../config';
-
-const frameMetadata = getFrameMetadata({
-  buttons: [
-    {
-      label: 'Redirect to cute dog pictures',
-      action: 'post_redirect',
-    },
-  ],
-  image: `${NEXT_PUBLIC_URL}/park-1.png`,
-  post_url: `${NEXT_PUBLIC_URL}/api/frame-redirect`,
-});
-
-export const metadata: Metadata = {
-  title: 'zizzamia.xyz',
-  description: 'LFG',
-  openGraph: {
-    title: 'zizzamia.xyz',
-    description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/park-1.png`],
-  },
-  other: {
-    ...frameMetadata,
-  },
-};
-
-export default function Page() {
-  return (
-    <>
-      <h1>zizzamia.xyz</h1>
-    </>
-  );
-}
-```
-
 ### `app/api/frame/route.ts`
 
 ```ts
@@ -169,25 +126,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
 export async function POST(req: NextRequest): Promise<Response> {
   return getResponse(req);
-}
-
-export const dynamic = 'force-dynamic';
-```
-
-### `app/api/frame-redirect/route.ts`
-
-```ts
-import { NextResponse } from 'next/server';
-
-async function getResponse(): Promise<NextResponse> {
-  return NextResponse.redirect(
-    'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
-    { status: 302 },
-  );
-}
-
-export async function POST(): Promise<Response> {
-  return getResponse();
 }
 
 export const dynamic = 'force-dynamic';

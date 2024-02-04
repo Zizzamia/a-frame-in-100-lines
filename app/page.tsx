@@ -5,7 +5,11 @@ import { NEXT_PUBLIC_URL } from './config';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Click Me',
+      label: 'Tell me the story',
+    },
+    {
+      label: 'Redirect to cute dog pictures',
+      action: 'post_redirect',
     },
   ],
   image: `${NEXT_PUBLIC_URL}/park-1.png`,

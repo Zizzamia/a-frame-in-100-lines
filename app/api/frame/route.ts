@@ -17,11 +17,18 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     text = body.untrustedData.inputText;
   }
 
+  if (message?.button === 2) {
+    return NextResponse.redirect(
+      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+      { status: 302 },
+    );
+  }
+
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `🌲 Text: ${text}`,
+          label: `🌲 Text: ${message?.button} ${text}`,
         },
       ],
       image: `${NEXT_PUBLIC_URL}/park-2.png`,
