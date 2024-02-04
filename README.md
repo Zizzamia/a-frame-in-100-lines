@@ -34,7 +34,11 @@ import { NEXT_PUBLIC_URL } from './config';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Click Me',
+      label: 'Tell me the story',
+    },
+    {
+      label: 'Redirect to cute dog pictures',
+      action: 'post_redirect',
     },
   ],
   image: `${NEXT_PUBLIC_URL}/park-1.png`,
@@ -93,8 +97,7 @@ export const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 ```ts
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
-
-const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
+import { NEXT_PUBLIC_URL } from '../../config';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
@@ -107,15 +110,22 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     accountAddress = message.interactor.verified_accounts[0];
   }
 
-  if (body?.untrustedData?.inputText) {
+  if (message?.input) {
     text = body.untrustedData.inputText;
+  }
+
+  if (message?.button === 2) {
+    return NextResponse.redirect(
+      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+      { status: 302 },
+    );
   }
 
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `Text: ${text}`,
+          label: `🌲 Text: ${message?.button} ${text}`,
         },
       ],
       image: `${NEXT_PUBLIC_URL}/park-2.png`,
