@@ -16,15 +16,15 @@ Have fun! ⛵️
 
 - app/
   - redirect-frame/
-    - page.tsx
-  - config.ts
-  - layout.tsx
-  - page.tsx
+    - [page.tsx](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#appredirect-framepagetsx)
+  - [config.ts](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#appconfigts)
+  - [layout.tsx](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#applayouttsx)
+  - [page.tsx](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#apppagetsx)
 - api/
   - frame/
-    - route.ts
+    - [route.ts](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#appapiframeroutets)
   - frame-redirect/
-    - route.ts
+    - [route.ts](https://github.com/Zizzamia/a-frame-in-100-lines?tab=readme-ov-file#appapiframe-redirectroutets)
 
 <br />
 
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-### `app/layout.tsx`
+### `app/config.ts`
 ```ts
 export const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 ```
@@ -197,7 +197,9 @@ export const dynamic = 'force-dynamic';
 
 ## Resources
 
-- [Official Farcaster Frames docs](https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5)
+- [Official Farcaster Frames documentation](https://docs.farcaster.xyz/learn/what-is-farcaster/frames)
+- [Official Farcaster Frame specification](https://docs.farcaster.xyz/reference/frames/spec)
+- [OnchainKit documentation](https://github.com/coinbase/onchainkit)
 
 <br />
 
