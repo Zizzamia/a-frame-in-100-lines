@@ -24,6 +24,13 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     );
   }
 
+  if (message?.button === 2) {
+    return NextResponse.redirect(
+      'https://matcha.xyz/tokens/ethereum/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+      { status: 302 },
+    );
+  }
+
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
