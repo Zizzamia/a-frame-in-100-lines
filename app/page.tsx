@@ -5,27 +5,28 @@ import { NEXT_PUBLIC_URL } from './config';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Tell me the story',
+      label: 'WBTC',
+      action: 'post_redirect',
     },
     {
-      label: 'Redirect to cute dog pictures',
+      label: 'ETH',
       action: 'post_redirect',
     },
   ],
-  image: `${NEXT_PUBLIC_URL}/park-1.png`,
-  input: {
-    text: 'Tell me a boat story',
-  },
+  image: `${NEXT_PUBLIC_URL}/fetch-crypto-prices.png`,
+  // input: {
+  //   text: 'Tell me a boat story',
+  // },
   post_url: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
-  title: 'zizzamia.xyz',
-  description: 'LFG',
+  title: 'crypto price fetcher',
+  description: 'get token prices',
   openGraph: {
-    title: 'zizzamia.xyz',
-    description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/park-1.png`],
+    title: 'crypto price fetcher',
+    description: 'get token prices',
+    images: [`${NEXT_PUBLIC_URL}/fetch-crypto-prices.png`],
   },
   other: {
     ...frameMetadata,
@@ -35,7 +36,9 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>zizzamia.xyz</h1>
+      <p className="text-md mb-2">
+        Swap on <a href="https://matcha.xyz">Matcha.xyz 🍵</a>
+      </p>
     </>
   );
 }
