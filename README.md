@@ -88,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```
 
 ### `app/config.ts`
+
 ```ts
 export const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 ```
