@@ -8,7 +8,12 @@ const frameMetadata = getFrameMetadata({
       label: 'Story time!',
     },
     {
-      label: 'Redirect to cute dog pictures',
+      action: 'link',
+      label: 'Link to Google',
+      target: 'https://www.google.com',
+    },
+    {
+      label: 'Redirect to cute pictures',
       action: 'post_redirect',
     },
   ],
