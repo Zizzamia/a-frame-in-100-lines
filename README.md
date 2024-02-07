@@ -34,10 +34,15 @@ import { NEXT_PUBLIC_URL } from './config';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Tell me the story',
+      label: 'Story time!',
     },
     {
-      label: 'Redirect to cute dog pictures',
+      action: 'link',
+      label: 'Link to Google',
+      target: 'https://www.google.com',
+    },
+    {
+      label: 'Redirect to pictures',
       action: 'post_redirect',
     },
   ],
@@ -115,7 +120,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     text = message.input;
   }
 
-  if (message?.button === 2) {
+  if (message?.button === 3) {
     return NextResponse.redirect(
       'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
       { status: 302 },

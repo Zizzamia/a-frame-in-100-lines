@@ -13,7 +13,7 @@ const frameMetadata = getFrameMetadata({
       target: 'https://www.google.com',
     },
     {
-      label: 'Redirect to cute pictures',
+      label: 'Redirect to pictures',
       action: 'post_redirect',
     },
   ],
