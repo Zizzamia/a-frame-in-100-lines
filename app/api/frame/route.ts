@@ -1,7 +1,13 @@
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
-
+interface TrackInfo {
+  trackName: string;
+  artist: string;
+  genre: string;
+  imageUrl: string;
+  playlink: string;
+}
 var token = "";
 async function authenticateSpotify() {
   const url = 'https://accounts.spotify.com/api/token';
@@ -73,7 +79,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     
   }
   authenticateSpotify();
-  getRecommendedSong();
+  // getRecommendedSong();
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
