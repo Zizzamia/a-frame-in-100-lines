@@ -3,13 +3,13 @@
   "version": "0.2.5",
   "scripts": {
     "build": "rm -rf .next && next build",
-    "dev": "next dev",
+    "dev": "PORT=4000 next dev",
     "format": "prettier --log-level warn --write .",
     "start": "next start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "https://twitter.com/Zizzamia",
+  "author": "https://twitter.com/cedricwaxwing",
   "license": "MIT",
   "dependencies": {
     "@coinbase/onchainkit": "0.5.1",
