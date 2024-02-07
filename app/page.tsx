@@ -1,7 +1,6 @@
 import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
 
-const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 
 const frameMetadata = getFrameMetadata({
   buttons: [
@@ -25,6 +24,8 @@ export const metadata: Metadata = {
     ...frameMetadata,
   },
 };
+
+
 
 export default function Page() {
   return (
