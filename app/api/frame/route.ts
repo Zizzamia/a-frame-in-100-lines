@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 interface TrackInfo {
   trackName: string;
   artist: string;
-  genre: string;
   imageUrl: string;
   playlink: string;
 }
@@ -37,6 +36,20 @@ async function authenticateSpotify() {
   .catch(error => console.error('Error:', error));
 }
 
+function extractSongInfo(res: any): TrackInfo {
+  const track = res.tracks[0];
+  const imageURL = track.album.images[0].url;
+
+  const trackInfo: TrackInfo = {
+    trackName: track.name,
+    artist: track.artists[0].name,
+    imageUrl: imageURL,
+    playlink: track.external_urls.spotify,
+  };
+
+  return trackInfo;
+}
+
 // Returns a recommended Spotify song
 async function getRecommendedSong(){
   const url = `https://api.spotify.com/v1/recommendations?limit=1`;
@@ -48,7 +61,7 @@ async function getRecommendedSong(){
       }
     });
     console.log(spotifyResponse);
-    return spotifyResponse;
+    return extractSongInfo(spotifyResponse);
   } catch(error) {
     console.error("Spotify Recommendation Error", error);
   }
@@ -73,21 +86,21 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   // Searching farcaster in there would be kinda funny
   // you can now do dynamic searches
   // LLM interactions
-  if (isValid) {
-    accountAddress = message.interactor.verified_accounts[0];
-    button_2 = message.following as any;
+  // if (isValid) {
+  //   accountAddress = message.interactor.verified_accounts[0];
+  //   button_2 = message.following as any;
     
-  }
+  // }
   authenticateSpotify();
-  // getRecommendedSong();
+  let res: TrackInfo = await getRecommendedSong() as TrackInfo;
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `🌲 ${accountAddress} 🌲`,
+          label: `🌲 ${res.trackName} 🌲`,
         },
         {
-          label: `${button_2}`,
+          label: `${res.trackName}`,
         }
       ],
       image: `https://spotify-gallery-00.vercel.app/ying_yang_mid.png`,
