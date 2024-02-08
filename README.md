@@ -50,7 +50,7 @@ const frameMetadata = getFrameMetadata({
   input: {
     text: 'Tell me a boat story',
   },
-  post_url: `${NEXT_PUBLIC_URL}/api/frame`,
+  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
@@ -135,7 +135,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: `${NEXT_PUBLIC_URL}/park-2.png`,
-      post_url: `${NEXT_PUBLIC_URL}/api/frame`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
     }),
   );
 }
