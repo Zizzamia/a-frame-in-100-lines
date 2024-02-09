@@ -1,6 +1,6 @@
 {
   "name": "a-frame-in-100-lines",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "scripts": {
     "build": "rm -rf .next && next build",
     "dev": "next dev",
@@ -12,7 +12,7 @@
   "author": "https://twitter.com/Zizzamia",
   "license": "MIT",
   "dependencies": {
-    "@coinbase/onchainkit": "0.5.3",
+    "@coinbase/onchainkit": "0.5.4",
     "next": "13.5.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

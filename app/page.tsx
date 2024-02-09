@@ -17,7 +17,10 @@ const frameMetadata = getFrameMetadata({
       action: 'post_redirect',
     },
   ],
-  image: `${NEXT_PUBLIC_URL}/park-1.png`,
+  image: {
+    src: `${NEXT_PUBLIC_URL}/park-3.png`,
+    aspectRatio: '1:1',
+  },
   input: {
     text: 'Tell me a boat story',
   },
