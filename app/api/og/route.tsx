@@ -4,7 +4,7 @@ export const runtime = 'edge';
 
 import { NextRequest, NextResponse } from 'next/server';
 
-export default async function handler(req: NextRequest) {
+export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const text = url.searchParams.get('text') || 'Hello, World!';
 
