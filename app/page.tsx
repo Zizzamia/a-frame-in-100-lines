@@ -9,8 +9,8 @@ const frameMetadata = getFrameMetadata({
     },
     {
       action: 'link',
-      label: 'Link to TLDL',
-      target: 'https://tldl.media',
+      label: 'Link to Google',
+      target: 'https://www.google.com',
     },
     {
       label: 'Redirect to pictures',
@@ -27,6 +27,11 @@ const frameMetadata = getFrameMetadata({
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
+// Encode the dynamic text for safe URL inclusion
+const dynamicText = encodeURIComponent("Let's get into it");
+// Construct the URL for the OG image with the dynamic text
+const ogImageUrl = `${NEXT_PUBLIC_URL}/api/og?text=${dynamicText}`;
+
 export const metadata: Metadata = {
   title: 'sters.eth',
   description: 'TLDL',
@@ -34,9 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'sters.eth',
     description: 'LFG',
-    images: [
-      'https://tldl.media/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthe-daily-gwei.9a503ff5.jpg&w=96&q=75',
-    ],
+    images: [ogImageUrl], // Use the dynamically constructed URL
   },
   other: {
     ...frameMetadata,
