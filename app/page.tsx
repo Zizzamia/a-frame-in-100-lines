@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: 'sters.eth',
     description: 'LFG',
     images: [
-      'https://tldl.media/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsters.728cc903.gif&w=128&q=75',
+      'https://tldl.media/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthe-daily-gwei.9a503ff5.jpg&w=96&q=75',
     ],
   },
   other: {
