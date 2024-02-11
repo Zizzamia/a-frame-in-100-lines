@@ -1,5 +1,5 @@
 {
-  "name": "TLDL Frames",
+  "name": "tldl_frames",
   "version": "0.2.6",
   "scripts": {
     "build": "rm -rf .next && next build",
