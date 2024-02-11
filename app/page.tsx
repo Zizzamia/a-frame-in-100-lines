@@ -24,7 +24,7 @@ const frameMetadata = getFrameMetadata({
   ],
   image: {
     src: ogImageUrl,
-    aspectRatio: '1:1',
+    aspectRatio: '1.91:1',
   },
   input: {
     text: 'Tell me a boat story',
