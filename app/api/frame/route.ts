@@ -28,11 +28,13 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `🌲 Text: ${text}`,
+          label: `Story: ${text} 🌲`,
         },
       ],
-      image: `${NEXT_PUBLIC_URL}/park-2.png`,
-      post_url: `${NEXT_PUBLIC_URL}/api/frame`,
+      image: {
+        src: `${NEXT_PUBLIC_URL}/park-1.png`,
+      },
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
     }),
   );
 }
