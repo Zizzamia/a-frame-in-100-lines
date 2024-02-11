@@ -1,5 +1,5 @@
 {
-  "name": "a-frame-in-100-lines",
+  "name": "TLDL Frames",
   "version": "0.2.6",
   "scripts": {
     "build": "rm -rf .next && next build",
@@ -9,10 +9,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "https://twitter.com/Zizzamia",
-  "license": "MIT",
+  "author": "sters",
+  "license": "",
   "dependencies": {
     "@coinbase/onchainkit": "0.5.2",
+    "mongodb": "^6.3.0",
     "next": "13.5.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
