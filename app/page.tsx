@@ -2,6 +2,11 @@ import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from './config';
 
+// Encode the dynamic text for safe URL inclusion
+const dynamicText = encodeURIComponent("Let's get into it");
+// Construct the URL for the OG image with the dynamic text
+const ogImageUrl = `${NEXT_PUBLIC_URL}/api/og?text=${dynamicText}`;
+
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
@@ -18,7 +23,7 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `${NEXT_PUBLIC_URL}/park-3.png`,
+    src: ogImageUrl,
     aspectRatio: '1:1',
   },
   input: {
@@ -27,11 +32,6 @@ const frameMetadata = getFrameMetadata({
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
-// Encode the dynamic text for safe URL inclusion
-const dynamicText = encodeURIComponent("Let's get into it");
-// Construct the URL for the OG image with the dynamic text
-const ogImageUrl = `${NEXT_PUBLIC_URL}/api/og?text=${dynamicText}`;
-
 export const metadata: Metadata = {
   title: 'sters.eth',
   description: 'TLDL',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'sters.eth',
     description: 'LFG',
-    images: [ogImageUrl], // Use the dynamically constructed URL
+    images: [ogImageUrl],
   },
   other: {
     ...frameMetadata,
