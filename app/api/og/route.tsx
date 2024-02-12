@@ -24,7 +24,20 @@ export async function GET(req: NextRequest) {
           flexWrap: 'nowrap',
         }}
       >
-        {text}
+        <div
+          style={{
+            fontSize: 60,
+            fontStyle: 'normal',
+            letterSpacing: '-0.025em',
+            color: 'white',
+            marginTop: 30,
+            padding: '0 120px',
+            lineHeight: 1.4,
+            whiteSpace: 'pre-wrap',
+          }}
+        >
+          {text}
+        </div>
       </div>
     ),
     {
