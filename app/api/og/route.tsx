@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
             whiteSpace: 'pre-wrap',
           }}
         >
-          <b>Vercel Edge Network</b>
+          <b>{text}</b>
         </div>
       </div>
     ),
