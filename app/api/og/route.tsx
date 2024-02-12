@@ -1,7 +1,7 @@
 // import { ImageResponse } from '@vercel/og';
 import { ImageResponse } from 'next/og';
 
-// export const runtime = 'edge';
+export const runtime = 'edge';
 
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -42,7 +42,6 @@ export async function GET(req: NextRequest) {
         </div>
       </div>
     ),
-
     {
       width: 1200,
       height: 630,
