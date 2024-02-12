@@ -1,7 +1,7 @@
 // import { ImageResponse } from '@vercel/og';
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 import { NextRequest, NextResponse } from 'next/server';
 import getEpisodeData from '../../utils/dbUtils';
