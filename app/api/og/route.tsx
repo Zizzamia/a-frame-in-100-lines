@@ -12,18 +12,16 @@ export async function GET(req: NextRequest) {
     (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
+          backgroundColor: 'black',
+          backgroundSize: '150px 150px',
           height: '100%',
           width: '100%',
-          color: 'white',
-          background: 'black',
-          fontSize: '48px',
-          boxSizing: 'border-box',
-          padding: '100px',
+          display: 'flex',
           textAlign: 'center',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          flexWrap: 'nowrap',
         }}
       >
         {text}
