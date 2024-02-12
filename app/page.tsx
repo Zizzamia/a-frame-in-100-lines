@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from './config';
 
 // Encode the dynamic text for safe URL inclusion
-const dynamicText = encodeURIComponent("Let's get into it");
+const dynamicText = encodeURIComponent('700');
 // Construct the URL for the OG image with the dynamic text
-const ogImageUrl = `${NEXT_PUBLIC_URL}/api/og?text=${dynamicText}`;
+const ogImageUrl = `${NEXT_PUBLIC_URL}/api/og?episode_number=${dynamicText}`;
 
 const frameMetadata = getFrameMetadata({
   buttons: [

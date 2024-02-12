@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getClientAndDb } from "../mongo/db";
+// import { getClientAndDb } from "../mongo/db";
+import getEpisodeData from "../../utils/dbUtils";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
-  console.log("GET /api/episode");
   try {
-    const { client, db } = await getClientAndDb();
-    const collection = db.collection("thedailygweiRecap");
+    // const { client, db } = await getClientAndDb();
+    // const collection = db.collection("thedailygweiRecap");
 
     const { searchParams } = req.nextUrl;
     const episodeNumberStr = searchParams.get("episode_number");
@@ -16,9 +16,7 @@ export async function GET(req: NextRequest) {
     if (episodeNumberStr !== null) {
       const episodeNumberInt = parseInt(episodeNumberStr, 10);
       // Fetch data from the collection based on episode number
-      const data = await collection.findOne({
-        episode_number: episodeNumberInt,
-      });
+      const data = await getEpisodeData(episodeNumberInt);
 
       if (!data) {
         // If no data was found, return a 404 Not Found response
