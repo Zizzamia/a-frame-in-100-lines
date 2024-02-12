@@ -17,9 +17,11 @@ export async function GET(req: NextRequest) {
           justifyContent: 'center',
           alignItems: 'center',
           height: '100%',
-          color: 'black',
-          background: 'white',
+          width: '100%',
+          color: 'white',
+          background: 'black',
           fontSize: '48px',
+          boxSizing: 'border-box',
           padding: '100px',
           textAlign: 'center',
         }}
