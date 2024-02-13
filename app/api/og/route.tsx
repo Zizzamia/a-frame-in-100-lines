@@ -53,19 +53,6 @@ export async function GET(req: NextRequest) {
           >
             {episodeData.episode_number}: {episodeData.episode_title}
           </h1>
-          <div
-            style={{
-              textAlign: 'left',
-              fontSize: '24px',
-              maxWidth: '1100px',
-            }}
-          >
-            {segmentTitles.split('\n').map((title: any, index: any) => (
-              <div key={index} style={{ marginBottom: '10px' }}>
-                {title}
-              </div>
-            ))}
-          </div>
         </div>
       ),
       {
