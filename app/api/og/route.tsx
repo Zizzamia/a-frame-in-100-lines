@@ -43,16 +43,29 @@ export async function GET(req: NextRequest) {
           <h1
             style={{
               display: 'flex',
-              fontSize: 40,
+              fontSize: '40px',
               fontStyle: 'normal',
               color: 'white',
-              marginTop: 30,
+              marginTop: '30px',
               lineHeight: 1.8,
               whiteSpace: 'pre-wrap',
             }}
           >
-            {episodeData.episode_number}: {episodeData.episode_title}
+            Hello, World
           </h1>
+
+          <div
+            style={{
+              textAlign: 'left',
+              color: 'white',
+              fontSize: '20px',
+              marginTop: '20px',
+            }}
+          >
+            <p>1. First item</p>
+            <p>2. Second item</p>
+            <p>3. Third item</p>
+          </div>
         </div>
       ),
       {
@@ -65,3 +78,19 @@ export async function GET(req: NextRequest) {
   }
 }
 export const dynamic = 'force-dynamic';
+
+{
+  /* <div
+style={{
+  textAlign: 'left',
+  fontSize: '24px',
+  maxWidth: '1100px',
+}}
+>
+{segmentTitles.split('\n').map((title: any, index: any) => (
+  <div key={index} style={{ marginBottom: '10px' }}>
+    {title}
+  </div>
+))}
+</div> */
+}
