@@ -64,6 +64,7 @@ export async function GET(req: NextRequest) {
             <p>1. {episodeData.episode_data[1].segment_title}. </p>
             <p>2. {episodeData.episode_data[2].segment_title}</p>
             <p>3. {episodeData.episode_data[3].segment_title}</p>
+            <p>4. {episodeData.episode_data[4].segment_title}</p>
           </div>
         </div>
       ),
