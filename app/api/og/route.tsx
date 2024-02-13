@@ -57,13 +57,13 @@ export async function GET(req: NextRequest) {
               flexDirection: 'column',
               textAlign: 'left',
               color: 'white',
-              fontSize: '20px',
-              marginTop: '20px',
+              fontSize: '30px',
+              marginTop: '10px',
             }}
           >
-            <p>1. First item</p>
-            <p>2. Second item</p>
-            <p>3. Third item</p>
+            <p>1. {episodeData.episode_data[1].segment_title}. </p>
+            <p>2. {episodeData.episode_data[2].segment_title}</p>
+            <p>3. {episodeData.episode_data[3].segment_title}</p>
           </div>
         </div>
       ),
