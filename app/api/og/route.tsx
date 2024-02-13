@@ -43,30 +43,15 @@ export async function GET(req: NextRequest) {
           <div
             style={{
               display: 'flex',
-              fontSize: '40px',
+              fontSize: 40,
               fontStyle: 'normal',
               color: 'white',
-              marginTop: '30px',
+              marginTop: 30,
               lineHeight: 1.8,
               whiteSpace: 'pre-wrap',
             }}
           >
-            Hello, World
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'left',
-              color: 'white',
-              fontSize: '20px',
-              marginTop: '20px',
-            }}
-          >
-            <p>1. First item</p>
-            <p>2. Second item</p>
-            <p>3. Third item</p>
+            <b>{episodeData.episode_title}</b>
           </div>
         </div>
       ),
@@ -80,6 +65,23 @@ export async function GET(req: NextRequest) {
   }
 }
 export const dynamic = 'force-dynamic';
+
+{
+  /* <div
+style={{
+  display: 'flex',
+  flexDirection: 'column',
+  textAlign: 'left',
+  color: 'white',
+  fontSize: '20px',
+  marginTop: '20px',
+}}
+>
+<p>1. First item</p>
+<p>2. Second item</p>
+<p>3. Third item</p>
+</div> */
+}
 
 {
   /* <div
