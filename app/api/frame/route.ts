@@ -1,6 +1,5 @@
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
-import { NEXT_PUBLIC_URL } from '../../config';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
@@ -23,7 +22,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       { status: 302 },
     );
   }
-
+  if (!process.env.NEXT_PUBLIC_URL) {
+    throw new Error('Invalid/Missing environment variable: "NEXT_PUBLIC_URL"');
+  }
+  const PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
@@ -32,9 +34,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${NEXT_PUBLIC_URL}/park-1.png`,
+        src: `${PUBLIC_URL}/park-1.png`,
       },
-      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+      postUrl: `${PUBLIC_URL}/api/frame`,
     }),
   );
 }

@@ -3,7 +3,7 @@ import { MongoClient, Db } from "mongodb";
 
 interface Client {
   promise?: Promise<{ client: MongoClient; db: Db }>;
-  conn?: any; // Replace 'any' with the actual type of 'conn' if known.
+  conn?: any; 
 }
 
 interface MongoInstance {

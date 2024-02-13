@@ -1,7 +1,5 @@
-// import { ImageResponse } from '@vercel/og';
 import { ImageResponse } from 'next/og';
 import { EpisodeProps } from '../../../types';
-// export const runtime = 'edge';
 
 import { NextRequest, NextResponse } from 'next/server';
 import getEpisodeData from '../../utils/dbUtils';
@@ -33,8 +31,6 @@ export async function GET(req: NextRequest) {
             flexDirection: 'column',
             flexWrap: 'nowrap',
             backgroundColor: 'black',
-            backgroundImage:
-              'radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)',
             backgroundSize: '100px 100px',
           }}
         >
@@ -58,13 +54,15 @@ export async function GET(req: NextRequest) {
               textAlign: 'left',
               color: 'white',
               fontSize: '30px',
-              marginTop: '10px',
+              marginTop: '2px',
+              lineHeight: '1',
             }}
           >
-            <p>1. {episodeData.episode_data[1].segment_title}. </p>
-            <p>2. {episodeData.episode_data[2].segment_title}</p>
-            <p>3. {episodeData.episode_data[3].segment_title}</p>
-            <p>4. {episodeData.episode_data[4].segment_title}</p>
+            {episodeData.episode_data.map((segment, index) => (
+              <p style={{ margin: '0px' }} key={index}>
+                {index + 1}. {segment.segment_title}.
+              </p>
+            ))}
           </div>
         </div>
       ),
@@ -78,19 +76,3 @@ export async function GET(req: NextRequest) {
   }
 }
 export const dynamic = 'force-dynamic';
-
-{
-  /* <div
-style={{
-  textAlign: 'left',
-  fontSize: '24px',
-  maxWidth: '1100px',
-}}
->
-{segmentTitles.split('\n').map((title: any, index: any) => (
-  <div key={index} style={{ marginBottom: '10px' }}>
-    {title}
-  </div>
-))}
-</div> */
-}

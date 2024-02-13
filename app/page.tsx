@@ -1,11 +1,15 @@
 import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
-import { NEXT_PUBLIC_URL } from './config';
 
 // Encode the dynamic text for safe URL inclusion
-const dynamicText = encodeURIComponent('726');
+const dynamicText = encodeURIComponent('724');
 // Construct the URL for the OG image with the dynamic text
-const ogImageUrl = `${NEXT_PUBLIC_URL}/api/og?episode_number=${dynamicText}`;
+if (!process.env.NEXT_PUBLIC_URL) {
+  throw new Error('Invalid/Missing environment variable: "NEXT_PUBLIC_URL"');
+}
+const PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
+
+const ogImageUrl = `${PUBLIC_URL}/api/og?episode_number=${dynamicText}`;
 
 const frameMetadata = getFrameMetadata({
   buttons: [
@@ -27,15 +31,15 @@ const frameMetadata = getFrameMetadata({
     aspectRatio: '1.91:1',
   },
   input: {
-    text: 'Tell me a boat story',
+    text: 'Enter Segment Number',
   },
-  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+  postUrl: `${PUBLIC_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
   title: 'tldl.eth',
   description: 'TLDL',
-  metadataBase: new URL(NEXT_PUBLIC_URL),
+  metadataBase: new URL(PUBLIC_URL),
   openGraph: {
     title: 'tldl.eth',
     description: 'LFG',
