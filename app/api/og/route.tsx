@@ -18,10 +18,6 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ status: 404, message: 'Data not found' });
     }
 
-    const segmentTitles = episodeData.segment_titles
-      .map((title: string, index: number) => `${index + 1}. ${title}`)
-      .join('\n');
-
     return new ImageResponse(
       (
         <div
