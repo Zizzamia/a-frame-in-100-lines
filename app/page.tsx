@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from './config';
 
 // Encode the dynamic text for safe URL inclusion
-const dynamicText = encodeURIComponent('727');
+const dynamicText = encodeURIComponent('726');
 // Construct the URL for the OG image with the dynamic text
 const ogImageUrl = `${NEXT_PUBLIC_URL}/api/og?episode_number=${dynamicText}`;
 
