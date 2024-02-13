@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
             backgroundSize: '100px 100px',
           }}
         >
-          <h1
+          <div
             style={{
               display: 'flex',
               fontSize: '40px',
@@ -52,7 +52,7 @@ export async function GET(req: NextRequest) {
             }}
           >
             Hello, World
-          </h1>
+          </div>
 
           <div
             style={{
