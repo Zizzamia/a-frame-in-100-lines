@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from './config';
 
 // Encode the dynamic text for safe URL inclusion
-const dynamicText = encodeURIComponent('700');
+const dynamicText = encodeURIComponent('727');
 // Construct the URL for the OG image with the dynamic text
 const ogImageUrl = `${NEXT_PUBLIC_URL}/api/og?episode_number=${dynamicText}`;
 
@@ -33,11 +33,11 @@ const frameMetadata = getFrameMetadata({
 });
 
 export const metadata: Metadata = {
-  title: 'sters.eth',
+  title: 'tldl.eth',
   description: 'TLDL',
   metadataBase: new URL(NEXT_PUBLIC_URL),
   openGraph: {
-    title: 'sters.eth',
+    title: 'tldl.eth',
     description: 'LFG',
     images: [ogImageUrl],
   },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>sters.eth</h1>
+      <h1>tldl.eth</h1>
     </>
   );
 }

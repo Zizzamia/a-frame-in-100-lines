@@ -18,6 +18,10 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ status: 404, message: 'Data not found' });
     }
 
+    const segmentTitles = episodeData.segment_titles
+      .map((title: string, index: number) => `${index + 1}. ${title}`)
+      .join('\n');
+
     return new ImageResponse(
       (
         <div
@@ -36,7 +40,7 @@ export async function GET(req: NextRequest) {
             backgroundSize: '100px 100px',
           }}
         >
-          <div
+          <h1
             style={{
               display: 'flex',
               fontSize: 40,
@@ -47,7 +51,20 @@ export async function GET(req: NextRequest) {
               whiteSpace: 'pre-wrap',
             }}
           >
-            <b>{episodeData.episode_title}</b>
+            {episodeData.episode_number}: {episodeData.episode_title}
+          </h1>
+          <div
+            style={{
+              textAlign: 'left',
+              fontSize: '24px',
+              maxWidth: '1100px',
+            }}
+          >
+            {segmentTitles.split('\n').map((title: any, index: any) => (
+              <div key={index} style={{ marginBottom: '10px' }}>
+                {title}
+              </div>
+            ))}
           </div>
         </div>
       ),
