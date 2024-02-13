@@ -1,6 +1,6 @@
 // import { ImageResponse } from '@vercel/og';
 import { ImageResponse } from 'next/og';
-
+import { EpisodeProps } from '../../../types';
 // export const runtime = 'edge';
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -12,11 +12,13 @@ export async function GET(req: NextRequest) {
 
   if (episodeNumberStr) {
     const episodeNumberInt = parseInt(episodeNumberStr, 10);
-    const episodeData = await getEpisodeData(episodeNumberInt);
+    const episodeDataResult = await getEpisodeData(episodeNumberInt);
 
-    if (!episodeData) {
+    if (!episodeDataResult) {
       return NextResponse.json({ status: 404, message: 'Data not found' });
     }
+
+    const episodeData: EpisodeProps = episodeDataResult as unknown as EpisodeProps;
 
     return new ImageResponse(
       (
