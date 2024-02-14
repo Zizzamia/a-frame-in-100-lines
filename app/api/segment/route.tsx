@@ -1,7 +1,7 @@
-// app/api/og/route.tsx
+// app/api/segment/route.tsx
 
 import { ImageResponse } from 'next/og';
-import { EpisodeProps } from '../../../types';
+import { EpisodeProps, SegmentProps } from '../../../types';
 
 import { NextRequest, NextResponse } from 'next/server';
 import getEpisodeData from '../../utils/dbUtils';
@@ -9,9 +9,11 @@ import getEpisodeData from '../../utils/dbUtils';
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const episodeNumberStr = searchParams.get('episode_number');
+  const segmentNumberStr = searchParams.get('segment_number');
 
-  if (episodeNumberStr) {
+  if (episodeNumberStr && segmentNumberStr) {
     const episodeNumberInt = parseInt(episodeNumberStr, 10);
+    const segmentNumberInt = parseInt(segmentNumberStr, 10);
     const episodeDataResult = await getEpisodeData(episodeNumberInt);
 
     if (!episodeDataResult) {
@@ -19,6 +21,14 @@ export async function GET(req: NextRequest) {
     }
 
     const episodeData: EpisodeProps = episodeDataResult as unknown as EpisodeProps;
+
+    // Validate segment number
+    if (segmentNumberInt <= 0 || segmentNumberInt > episodeData.episode_data.length) {
+      return NextResponse.json({ status: 404, message: 'Segment data not found' });
+    }
+
+    // Extract the specific segment data
+    const segmentData: SegmentProps = episodeData.episode_data[segmentNumberInt - 1];
 
     return new ImageResponse(
       (
@@ -47,24 +57,7 @@ export async function GET(req: NextRequest) {
               whiteSpace: 'pre-wrap',
             }}
           >
-            <b>{episodeData.episode_title}</b>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'left',
-              color: 'white',
-              fontSize: '30px',
-              marginTop: '2px',
-              lineHeight: '1',
-            }}
-          >
-            {episodeData.episode_data.map((segment, index) => (
-              <p style={{ margin: '0px' }} key={index}>
-                {index + 1}. {segment.segment_title}.
-              </p>
-            ))}
+            <b>{segmentData.segment_title}</b>
           </div>
         </div>
       ),
@@ -74,7 +67,10 @@ export async function GET(req: NextRequest) {
       },
     );
   } else {
-    return NextResponse.json({ status: 400, message: 'Bad Request' });
+    return NextResponse.json({
+      status: 400,
+      message: 'Bad Request: Missing episode or segment number',
+    });
   }
 }
 export const dynamic = 'force-dynamic';

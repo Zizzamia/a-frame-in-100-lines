@@ -14,16 +14,7 @@ const ogImageUrl = `${PUBLIC_URL}/api/og?episode_number=${dynamicText}`;
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Story time!',
-    },
-    {
-      action: 'link',
-      label: 'Link to Google',
-      target: 'https://www.google.com',
-    },
-    {
-      label: 'Redirect to pictures',
-      action: 'post_redirect',
+      label: 'Go to Segment',
     },
   ],
   image: {
