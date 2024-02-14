@@ -1,7 +1,7 @@
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
-export const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
+const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
   let text: string | undefined = '';
