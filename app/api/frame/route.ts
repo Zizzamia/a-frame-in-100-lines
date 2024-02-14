@@ -36,7 +36,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       },
     });
   }
-  
+
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
   if (isValid) {
@@ -70,6 +70,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       ],
       image: {
         src: `${PUBLIC_URL}/api/og?episode_number=${episodeNumber}`,
+        aspectRatio: '1.91:1',
       },
       postUrl: `${PUBLIC_URL}/api/frame`,
     }),
