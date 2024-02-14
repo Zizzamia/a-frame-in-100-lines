@@ -16,10 +16,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   let segmentNumber: string = '';
   console.log(' - episodeNumber:', episodeNumber);
 
-  // const body: FrameRequest = await req.json();
-  let body: FrameRequest | null = null;
   try {
-    body = await req.json();
+    console.log(' - req:', req);
+    const body: FrameRequest = await req.json();
     console.log(' - body:', body);
   } catch (error) {
     console.error('Error parsing JSON:', error);
@@ -30,16 +29,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       },
     });
   }
-  console.log(' - body:', body);
-  if (!body) {
-    return new NextResponse(JSON.stringify({ error: 'Empty body' }), {
-      status: 400,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-
+  
+  const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
   if (isValid) {
