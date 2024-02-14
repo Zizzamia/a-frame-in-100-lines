@@ -12,13 +12,15 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
 
   let accountAddress: string | undefined = '';
-  const episodeNumber: string = '725';
+  const episodeNumber: string = '730';
   let segmentNumber: string = '';
   console.log(' - episodeNumber:', episodeNumber);
+
   // const body: FrameRequest = await req.json();
   let body: FrameRequest | null = null;
   try {
     body = await req.json();
+    console.log(' - body:', body);
   } catch (error) {
     console.error('Error parsing JSON:', error);
     return new NextResponse(JSON.stringify({ error: 'Bad request' }), {
