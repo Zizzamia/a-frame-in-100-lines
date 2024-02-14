@@ -1,9 +1,10 @@
 // app/api/frame/route.ts
-
+console.log('Hello from frame/route.ts');
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
+  console.log('Hello from getResponse');
   // Get URL
   if (!process.env.NEXT_PUBLIC_URL) {
     throw new Error('Invalid/Missing environment variable: "NEXT_PUBLIC_URL"');
@@ -13,7 +14,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
   const episodeNumber: string = '725';
   let segmentNumber: string = '';
-
+  console.log(' - episodeNumber:', episodeNumber);
   // const body: FrameRequest = await req.json();
   let body: FrameRequest | null = null;
   try {
@@ -27,7 +28,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       },
     });
   }
-
+  console.log(' - body:', body);
   if (!body) {
     return new NextResponse(JSON.stringify({ error: 'Empty body' }), {
       status: 400,
@@ -42,7 +43,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
   }
-  
+  console.log(' - accountAddress:', accountAddress);
   // Check episodeNumber
   const episodeNumberInt = parseInt(episodeNumber, 10); 
   if (isNaN(episodeNumberInt)) {
@@ -60,7 +61,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     throw new Error('Invalid Segment number provided');
   }
   segmentNumber = message.input
-
+  console.log(' - segmentNumber:', segmentNumber);
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
