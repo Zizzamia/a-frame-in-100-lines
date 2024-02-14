@@ -2,7 +2,7 @@ import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
 
 // Encode the dynamic text for safe URL inclusion
-const dynamicText = encodeURIComponent('724');
+const dynamicText = encodeURIComponent('730');
 // Construct the URL for the OG image with the dynamic text
 if (!process.env.NEXT_PUBLIC_URL) {
   throw new Error('Invalid/Missing environment variable: "NEXT_PUBLIC_URL"');
