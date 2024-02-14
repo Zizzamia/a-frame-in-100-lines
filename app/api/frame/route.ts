@@ -1,72 +1,40 @@
-// app/api/frame/route.ts
-console.log('Hello from frame/route.ts');
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 async function getResponse(req: NextRequest): Promise<NextResponse> {
-  console.log('Hello from getResponse');
-  // Get URL
-  if (!process.env.NEXT_PUBLIC_URL) {
-    throw new Error('Invalid/Missing environment variable: "NEXT_PUBLIC_URL"');
-  }  
-  const PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
-
   let accountAddress: string | undefined = '';
-  const episodeNumber: string = '730';
-  let segmentNumber: string = '';
-  console.log(' - episodeNumber:', episodeNumber);
+  let text: string | undefined = '';
 
-  try {
-    console.log(' - req:', req);
-    const body: FrameRequest = await req.json();
-    console.log(' - body:', body);
-  } catch (error) {
-    console.error('Error parsing JSON:', error);
-    return new NextResponse(JSON.stringify({ error: 'Bad request' }), {
-      status: 400,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-  
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
   }
-  console.log(' - accountAddress:', accountAddress);
-  // Check episodeNumber
-  const episodeNumberInt = parseInt(episodeNumber, 10); 
-  if (isNaN(episodeNumberInt)) {
-    throw new Error('Invalid Episode number provided');
+
+  if (message?.input) {
+    text = message.input;
   }
 
-  // Check segmentNumber blank
-  if (!message?.input) {
-    throw new Error('No input text provided');
+  if (message?.button === 3) {
+    return NextResponse.redirect(
+      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+      { status: 302 },
+    );
   }
 
-  // Validate the segment number T
-  const segmentNumberInt = parseInt(message.input, 10); 
-  if (isNaN(segmentNumberInt)) {
-    throw new Error('Invalid Segment number provided');
-  }
-  segmentNumber = message.input
-  console.log(' - segmentNumber:', segmentNumber);
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `Segment: ${segmentNumber} 🌲`,
+          label: `🌲 ${text} 🌲`,
         },
       ],
       image: {
-        src: `${PUBLIC_URL}/api/og?episode_number=${episodeNumber}`,
-        aspectRatio: '1.91:1',
+        src: `${NEXT_PUBLIC_URL}/park-1.png`,
       },
-      postUrl: `${PUBLIC_URL}/api/frame`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
     }),
   );
 }
@@ -76,7 +44,3 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 export const dynamic = 'force-dynamic';
-
-
-// src: `${PUBLIC_URL}/api/segment?episode_number=${episodeNumber}?segment_number=${segmentNumber}`,
-// 
