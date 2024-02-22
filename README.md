@@ -27,7 +27,7 @@ Have fun! ⛵️
 ### `app/page.tsx`
 
 ```tsx
-import { getFrameMetadata } from '@coinbase/onchainkit';
+import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from './config';
 
@@ -104,7 +104,7 @@ export const NEXT_PUBLIC_URL = 'https://zizzamia.xyz';
 ### `app/api/frame/route.ts`
 
 ```ts
-import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
+import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../config';
 
