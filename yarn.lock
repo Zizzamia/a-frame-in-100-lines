@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@adraffy/ens-normalize/-/ens-normalize-1.10.0.tgz#d2a39395c587e092d77cbbc80acf956a54f38bf7"
   integrity sha512-nA9XHtlAkYfJxY7bce8DcN7eKxWWCWkU+1GR9d+U6MbNpfwQp8TI7vqOsBsMcHoT4mBu2kypKoSKnghEzOOq5Q==
 
-"@coinbase/onchainkit@0.9.2":
-  version "0.9.2"
-  resolved "https://registry.yarnpkg.com/@coinbase/onchainkit/-/onchainkit-0.9.2.tgz#4a7a9ba7832f192ad0115984e29d86cd977e2818"
-  integrity sha512-EqlB9uzSBJeeBbwQrk4ZEgLcd+sGTr/OwAoumKgmAQe+7MEDhXyZRng1f61Uw4ytUHBg3wl2JmyxCgf1yWceYw==
+"@coinbase/onchainkit@0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@coinbase/onchainkit/-/onchainkit-0.9.4.tgz#a8fbb498d61522a610f368199577da2082b29920"
+  integrity sha512-qZ033gWraZmKcxdtXWUYJxcIFJe+FWHzxfameEp4itg1wHyj++PVyxBbtYxwH/fei2A3qK5ZWbX1iRxCzJx9Mw==
 
 "@next/env@13.5.6":
   version "13.5.6"
