@@ -12,7 +12,7 @@ Farcaster Frames in less than 100 lines, and ready to be deployed to Vercel.
 To test a **deployed** Frame, use: https://warpcast.com/~/developers/frames.
 
 To test a **localhost** Frame, use: [Framegear](https://onchainkit.xyz/frame/framegear).
-Framegear is a simple tool that allows you to run and test your frames locally:
+A simple tool that allows you to run and test your frames locally:
 - without publishing
 - without casting
 - without spending warps
