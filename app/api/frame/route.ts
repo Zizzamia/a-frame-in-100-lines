@@ -17,12 +17,20 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     text = message.input;
   }
 
-  if (message?.button === 3) {
-    return NextResponse.redirect(
-      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
-      { status: 302 },
-    );
+  // Use this code to send a transaction
+  if (message?.button === 2) {
+    // Coming soon
   }
+  
+  /**
+   * Use this code to redirect to a different page
+   */
+  //if (message?.button === 1) {
+  //  return NextResponse.redirect(
+  //    'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+  //    { status: 302 },
+  //  );
+  //}
 
   return new NextResponse(
     getFrameHtmlResponse({

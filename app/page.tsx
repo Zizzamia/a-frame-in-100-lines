@@ -6,6 +6,7 @@ const frameMetadata = getFrameMetadata({
   buttons: [
     {
       label: 'Story time!',
+      target: `${NEXT_PUBLIC_URL}/api/frame`,
     },
     {
       action: 'link',
@@ -13,9 +14,10 @@ const frameMetadata = getFrameMetadata({
       target: 'https://www.google.com',
     },
     {
-      label: 'Redirect to pictures',
-      action: 'post_redirect',
-    },
+      action: 'tx',
+      label: 'Send Base Sepolia',
+      target: `${NEXT_PUBLIC_URL}/api/frame`,
+    }
   ],
   image: {
     src: `${NEXT_PUBLIC_URL}/park-3.png`,
@@ -23,8 +25,7 @@ const frameMetadata = getFrameMetadata({
   },
   input: {
     text: 'Tell me a boat story',
-  },
-  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+  }
 });
 
 export const metadata: Metadata = {
