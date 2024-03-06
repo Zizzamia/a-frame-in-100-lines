@@ -11,8 +11,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   }
 
   const text = message.input || '';
-  const state = body.untrustedData.state;
   const stateSerialized = message.state?.serialized;
+  const state = body.untrustedData.state;
+  console.log('message', message);
+  console.log('body', body.trustedData);
   
   /**
    * Use this code to redirect to a different page
