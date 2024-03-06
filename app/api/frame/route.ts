@@ -11,7 +11,14 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   }
 
   const text = message.input || '';
-  const state = JSON.parse(decodeURIComponent(message.state?.serialized));
+  let state = {
+    page: 0
+  };
+  try {
+    state = JSON.parse(decodeURIComponent(message.state?.serialized));
+  } catch (e) {
+    console.error(e);
+  }
   
   /**
    * Use this code to redirect to a different page
