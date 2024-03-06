@@ -26,7 +26,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     params: {
       abi: [],
       to: accountAddress,
-      value: formatEther(1000000000000000000n),
+      value: formatEther(10000000000000000n), // 0.01 ETH (https://eth-converter.com)
     },
   };
   return NextResponse.json(txData);
