@@ -1,39 +1,32 @@
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { encodeFunctionData, formatEther, parseEther } from 'viem';
-import { baseSepolia } from 'viem/chains';
-import type { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
-import type { Address } from 'viem';
+import { base } from 'viem/chains';
 import BuyMeACoffeeABI from '../../_contracts/BuyMeACoffeeABI';
+import { BUY_MY_COFFEE_CONTRACT_ADDR } from '../../config';
+import type { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
 
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const body: FrameRequest = await req.json();
-  const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
+  const { isValid } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
   if (!isValid) {
-    return new NextResponse("Message not valid", { status: 500 });
-  }
-
-  const ethAddresses = message.interactor.verified_addresses.eth_addresses;
-  const accountAddress = ethAddresses ? ethAddresses[0] as Address : '';
-
-  if (!accountAddress) {
-    return new NextResponse("Missing accountAddress", { status: 500 });
+    return new NextResponse('Message not valid', { status: 500 });
   }
 
   const data = encodeFunctionData({
     abi: BuyMeACoffeeABI,
     functionName: 'buyCoffee',
-    args: [parseEther('1'), 'zizzamia', '@zizzamia', 'Coffee all day!']
+    args: [parseEther('1'), 'zizzamia', '@zizzamia', 'Coffee all day!'],
   });
-  
+
   const txData: FrameTransactionResponse = {
-    chainId: `eip155:${baseSepolia.id}`,
-    method: "eth_sendTransaction",
+    chainId: `eip155:${base.id}`,
+    method: 'eth_sendTransaction',
     params: {
       abi: [],
       data,
-      to: accountAddress,
+      to: BUY_MY_COFFEE_CONTRACT_ADDR,
       value: formatEther(parseEther('0.01')), // 0.01 ETH
     },
   };

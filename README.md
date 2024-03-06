@@ -13,6 +13,7 @@ To test a **deployed** Frame, use: https://warpcast.com/~/developers/frames.
 
 To test a **localhost** Frame, use: [Framegear](https://onchainkit.xyz/frame/framegear).
 A simple tool that allows you to run and test your frames locally:
+
 - without publishing
 - without casting
 - without spending warps

@@ -7,19 +7,19 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
   if (!isValid) {
-    return new NextResponse("Message not valid", { status: 500 });
+    return new NextResponse('Message not valid', { status: 500 });
   }
 
   const text = message.input || '';
   let state = {
-    page: 0
+    page: 0,
   };
   try {
     state = JSON.parse(decodeURIComponent(message.state?.serialized));
   } catch (e) {
     console.error(e);
   }
-  
+
   /**
    * Use this code to redirect to a different page
    */
@@ -53,7 +53,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       state: {
         page: state?.page + 1,
         time: new Date().toISOString(),
-      }
+      },
     }),
   );
 }

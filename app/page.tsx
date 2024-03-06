@@ -11,7 +11,7 @@ const frameMetadata = getFrameMetadata({
       action: 'tx',
       label: 'Send Base Sepolia',
       target: `${NEXT_PUBLIC_URL}/api/send-ether`,
-    }
+    },
   ],
   image: {
     src: `${NEXT_PUBLIC_URL}/park-3.png`,
@@ -20,7 +20,7 @@ const frameMetadata = getFrameMetadata({
   input: {
     text: 'Tell me a story',
   },
-  postUrl: `${NEXT_PUBLIC_URL}/api/frame`
+  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
