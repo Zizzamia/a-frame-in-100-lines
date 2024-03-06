@@ -8,11 +8,6 @@ const frameMetadata = getFrameMetadata({
       label: 'Story time',
     },
     {
-      action: 'link',
-      label: 'OnchainKit',
-      target: 'https://onchainkit.xyz',
-    },
-    {
       action: 'tx',
       label: 'Send Base Sepolia',
       target: `${NEXT_PUBLIC_URL}/api/send-ether`,
