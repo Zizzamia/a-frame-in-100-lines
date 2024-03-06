@@ -11,7 +11,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   }
 
   const text = message.input || '';
-  const state = message.state;
+  const state = body.untrustedData.state;
+  const stateSerialized = message.state?.serialized;
   
   /**
    * Use this code to redirect to a different page
@@ -30,7 +31,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
           label: `Story: ${text}`,
         },
         {
-          label: `State: ${state?.serialized}`,
+          label: `State 1: ${stateSerialized}`,
+        },
+        {
+          label: `State 2: ${state}`,
         },
         {
           action: 'post_redirect',
@@ -41,6 +45,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         src: `${NEXT_PUBLIC_URL}/park-1.png`,
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+      state: {
+        page: 2,
+        time: new Date().toISOString(),
+      }
     }),
   );
 }

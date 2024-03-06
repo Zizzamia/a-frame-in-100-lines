@@ -27,6 +27,7 @@ const frameMetadata = getFrameMetadata({
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
   state: {
+    page: 1,
     time: new Date().toISOString(),
   }
 });
