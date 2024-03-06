@@ -9,7 +9,7 @@ const frameMetadata = getFrameMetadata({
     },
     {
       action: 'link',
-      label: 'Link to OnchainKit',
+      label: 'OnchainKit',
       target: 'https://onchainkit.xyz',
     },
     {
@@ -26,6 +26,9 @@ const frameMetadata = getFrameMetadata({
     text: 'Tell me a story',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+  state: {
+    time: new Date().toISOString(),
+  }
 });
 
 export const metadata: Metadata = {

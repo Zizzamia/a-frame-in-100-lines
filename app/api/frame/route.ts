@@ -11,22 +11,30 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   }
 
   const text = message.input || '';
+  const state = message.state;
   
   /**
    * Use this code to redirect to a different page
    */
-  //if (message?.button === 1) {
-  //  return NextResponse.redirect(
-  //    'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
-  //    { status: 302 },
-  //  );
-  //}
+  if (message?.button === 3) {
+    return NextResponse.redirect(
+      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+      { status: 302 },
+    );
+  }
 
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `Story: ${text} 🌲🌲`,
+          label: `Story: ${text}`,
+        },
+        {
+          label: `State: ${state?.serialized}`,
+        },
+        {
+          action: 'post_redirect',
+          label: 'Cute dog pictures',
         },
       ],
       image: {
