@@ -5,17 +5,17 @@ import { NEXT_PUBLIC_URL } from './config';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Story time!',
+      label: 'Story time',
     },
     {
       action: 'link',
-      label: 'Link to Google',
-      target: 'https://www.google.com',
+      label: 'Link to OnchainKit',
+      target: 'https://onchainkit.xyz',
     },
     {
       action: 'tx',
       label: 'Send Base Sepolia',
-      target: `${NEXT_PUBLIC_URL}/api/frame`,
+      target: `${NEXT_PUBLIC_URL}/api/send-ether`,
     }
   ],
   image: {
@@ -23,7 +23,7 @@ const frameMetadata = getFrameMetadata({
     aspectRatio: '1:1',
   },
   input: {
-    text: 'Tell me a boat story',
+    text: 'Tell me a story',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
