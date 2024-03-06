@@ -12,9 +12,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   const text = message.input || '';
   const stateSerialized = message.state?.serialized;
-  const state = body.untrustedData.state;
-  console.log('message', message);
-  console.log('body', body.trustedData);
   
   /**
    * Use this code to redirect to a different page
@@ -33,10 +30,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
           label: `Story: ${text}`,
         },
         {
-          label: `State 1: ${stateSerialized}`,
-        },
-        {
-          label: `State 2: ${state}`,
+          label: `State: ${stateSerialized}`,
         },
         {
           action: 'post_redirect',
