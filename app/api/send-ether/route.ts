@@ -1,6 +1,6 @@
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { encodeFunctionData, formatEther, parseEther } from 'viem';
+import { encodeFunctionData, parseEther } from 'viem';
 import { base } from 'viem/chains';
 import BuyMeACoffeeABI from '../../_contracts/BuyMeACoffeeABI';
 import { BUY_MY_COFFEE_CONTRACT_ADDR } from '../../config';
@@ -27,7 +27,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
       abi: [],
       data,
       to: BUY_MY_COFFEE_CONTRACT_ADDR,
-      value: formatEther(parseEther('0.01')), // 0.01 ETH
+      value: parseEther('0.01').toString(), // 0.01 ETH
     },
   };
   return NextResponse.json(txData);
