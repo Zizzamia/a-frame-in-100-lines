@@ -10,8 +10,6 @@ const abi = [
     name: 'buyCoffee',
     inputs: [
       { name: 'numCoffees', type: 'uint256', internalType: 'uint256' },
-      { name: 'userName', type: 'string', internalType: 'string' },
-      { name: 'twitterHandle', type: 'string', internalType: 'string' },
       { name: 'message', type: 'string', internalType: 'string' },
     ],
     outputs: [],
@@ -31,8 +29,6 @@ const abi = [
         internalType: 'struct Memo[]',
         components: [
           { name: 'numCoffees', type: 'uint256', internalType: 'uint256' },
-          { name: 'userName', type: 'string', internalType: 'string' },
-          { name: 'twitterHandle', type: 'string', internalType: 'string' },
           { name: 'message', type: 'string', internalType: 'string' },
           { name: 'time', type: 'uint256', internalType: 'uint256' },
           { name: 'userAddress', type: 'address', internalType: 'address' },
@@ -47,8 +43,6 @@ const abi = [
     inputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
     outputs: [
       { name: 'numCoffees', type: 'uint256', internalType: 'uint256' },
-      { name: 'userName', type: 'string', internalType: 'string' },
-      { name: 'twitterHandle', type: 'string', internalType: 'string' },
       { name: 'message', type: 'string', internalType: 'string' },
       { name: 'time', type: 'uint256', internalType: 'uint256' },
       { name: 'userAddress', type: 'address', internalType: 'address' },
@@ -88,6 +82,13 @@ const abi = [
   },
   {
     type: 'function',
+    name: 'setPriceForCoffee',
+    inputs: [{ name: '_price', type: 'uint256', internalType: 'uint256' }],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
     name: 'withdrawTips',
     inputs: [],
     outputs: [],
@@ -109,8 +110,6 @@ const abi = [
       { name: 'userAddress', type: 'address', indexed: true, internalType: 'address' },
       { name: 'time', type: 'uint256', indexed: false, internalType: 'uint256' },
       { name: 'numCoffees', type: 'uint256', indexed: false, internalType: 'uint256' },
-      { name: 'userName', type: 'string', indexed: false, internalType: 'string' },
-      { name: 'twitterHandle', type: 'string', indexed: false, internalType: 'string' },
       { name: 'message', type: 'string', indexed: false, internalType: 'string' },
     ],
     anonymous: false,
