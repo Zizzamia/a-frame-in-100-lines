@@ -10,7 +10,8 @@ const frameMetadata = getFrameMetadata({
     {
       action: 'tx',
       label: 'Send Base Sepolia',
-      target: `${NEXT_PUBLIC_URL}/api/send-ether`,
+      target: `${NEXT_PUBLIC_URL}/api/tx`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/tx-success`,
     },
   ],
   image: {
