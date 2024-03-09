@@ -27,7 +27,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
       abi: [],
       data,
       to: BUY_MY_COFFEE_CONTRACT_ADDR,
-      value: parseEther('0.01').toString(), // 0.01 ETH
+      value: parseEther('0.00004').toString(), // 0.00004 ETH
     },
   };
   return NextResponse.json(txData);
