@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   },
   other: {
     ...frameMetadata,
+    'of:accepts:xmtp': '2024-02-01',
   },
 };
 
