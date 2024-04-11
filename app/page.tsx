@@ -8,10 +8,7 @@ const frameMetadata = getFrameMetadata({
       label: 'Captain #1',
     },
     {
-      action: 'tx',
-      label: 'Send Base Sepolia',
-      target: `${NEXT_PUBLIC_URL}/api/tx`,
-      postUrl: `${NEXT_PUBLIC_URL}/api/tx-success`,
+      label: 'Captain #2',
     },
   ],
   image: {
@@ -25,12 +22,12 @@ const frameMetadata = getFrameMetadata({
 });
 
 export const metadata: Metadata = {
-  title: 'zizzamia.xyz',
-  description: 'LFG',
+  title: 'Test of frame',
+  description: 'FFBet',
   openGraph: {
     title: 'zizzamia.xyz',
     description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/park-1.png`],
+    images: [`${NEXT_PUBLIC_URL}/bg.jpg`],
   },
   other: {
     ...frameMetadata,
