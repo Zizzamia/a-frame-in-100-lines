@@ -12,11 +12,8 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `${NEXT_PUBLIC_URL}/park-3.png`,
+    src: `${NEXT_PUBLIC_URL}/bg.jpg`,
     aspectRatio: '1:1',
-  },
-  input: {
-    text: 'Tell me a story',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
@@ -25,7 +22,7 @@ export const metadata: Metadata = {
   title: 'Test of frame',
   description: 'FFBet',
   openGraph: {
-    title: 'zizzamia.xyz',
+    title: '0xCptCG',
     description: 'LFG',
     images: [`${NEXT_PUBLIC_URL}/bg.jpg`],
   },
