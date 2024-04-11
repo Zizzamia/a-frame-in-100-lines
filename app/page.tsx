@@ -13,17 +13,19 @@ const frameMetadata = getFrameMetadata({
   ],
   image: {
     src: `${NEXT_PUBLIC_URL}/bg_ff.png`,
+    aspectRatio: '1:1',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(NEXT_PUBLIC_URL),
   title: 'Test of frame',
   description: 'FFBet',
   openGraph: {
     title: '0xCptCG',
     description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/park-1.png`],
+    images: [`${NEXT_PUBLIC_URL}/bg_ff.png`],
   },
   other: {
     ...frameMetadata,
