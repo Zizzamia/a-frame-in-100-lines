@@ -8,8 +8,12 @@ import type { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
 
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const body: FrameRequest = await req.json();
+  const allowFramegear = process.env.NODE_ENV !== 'production';
   // Remember to replace 'NEYNAR_ONCHAIN_KIT' with your own Neynar API key
-  const { isValid } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
+  const { isValid } = await getFrameMessage(body, {
+    neynarApiKey: 'NEYNAR_ONCHAIN_KIT',
+    allowFramegear,
+  });
 
   if (!isValid) {
     return new NextResponse('Message not valid', { status: 500 });
