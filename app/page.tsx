@@ -5,31 +5,39 @@ import { NEXT_PUBLIC_URL } from './config';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Story time',
+      action: 'tx',
+      label: 'Approve & Buy Position in A',
+      target: `${NEXT_PUBLIC_URL}/api/tx`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/confirm`,
     },
     {
       action: 'tx',
-      label: 'Send Base Sepolia',
+      label: 'Approve & Buy Position in B',
+      target: `${NEXT_PUBLIC_URL}/api/tx`,
+    },
+    {
+      action: 'tx',
+      label: 'Approve & Buy Position for Draw ',
       target: `${NEXT_PUBLIC_URL}/api/tx`,
       postUrl: `${NEXT_PUBLIC_URL}/api/tx-success`,
     },
   ],
   image: {
-    src: `${NEXT_PUBLIC_URL}/park-3.png`,
+    src: `https://raw.githubusercontent.com/Aheesh/buidl-portfolio/main/public/IRLChess-Sepolia.webp`,
     aspectRatio: '1:1',
   },
   input: {
-    text: 'Tell me a story',
+    text: '100 $DEGEN',
   },
-  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+  postUrl: `${NEXT_PUBLIC_URL}/api/confirm`,
 });
 
 export const metadata: Metadata = {
-  title: 'zizzamia.xyz',
-  description: 'LFG',
+  title: 'Baller Chess',
+  description: 'Game 1',
   openGraph: {
-    title: 'zizzamia.xyz',
-    description: 'LFG',
+    title: 'Baller Chess',
+    description: 'Toy Game 1',
     images: [`${NEXT_PUBLIC_URL}/park-1.png`],
   },
   other: {
@@ -40,7 +48,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>zizzamia.xyz</h1>
+      <h1>Default Page for Baller Chess</h1>
     </>
   );
 }

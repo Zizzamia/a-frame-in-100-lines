@@ -1,4 +1,6 @@
 // use NODE_ENV to not have to change config based on where it's deployed
 export const NEXT_PUBLIC_URL =
   process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : 'https://zizzamia.xyz';
-export const BUY_MY_COFFEE_CONTRACT_ADDR = '0xcD3D5E4E498BAb2e0832257569c3Fd4AE439dD6f';
+export const PLAYER_A_CONTRACT_ADDR = '';
+export const STABLE_CONTRACT_ADDR = '0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238';
+export const BAL_VAULT_ADDR = '0xBA12222222228d8Ba445958a75a0704d566BF2C8';
