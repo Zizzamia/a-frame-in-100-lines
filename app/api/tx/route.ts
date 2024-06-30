@@ -1,7 +1,6 @@
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { encodeFunctionData, parseUnits, toHex, padHex } from 'viem';
-import ethers from 'ethers';
 import { baseSepolia, sepolia } from 'viem/chains';
 import playerAToken from '../../_contracts/PlayerAToken.json';
 import { BAL_VAULT_ADDR, PLAYER_A_CONTRACT_ADDR } from '../../config';
