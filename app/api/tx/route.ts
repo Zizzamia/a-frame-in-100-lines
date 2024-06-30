@@ -26,9 +26,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     args: [BAL_VAULT_ADDR, value],
   });
 
-  const txData: FrameTransactionResponse = {
+  const txData = {
     chainId: `eip155:${sepolia.id}`,
     method: 'eth_sendTransaction',
+    attribution: false,
     params: {
       abi: [],
       data,
