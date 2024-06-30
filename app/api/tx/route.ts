@@ -23,7 +23,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const data = encodeFunctionData({
     abi: abi,
     functionName: 'approve',
-    args: [BAL_VAULT_ADDR, BigInt(hexValue)],
+    args: [BAL_VAULT_ADDR, hexValue],
   });
 
   const txData: FrameTransactionResponse = {
