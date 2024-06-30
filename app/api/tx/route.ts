@@ -1,9 +1,11 @@
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { encodeFunctionData, parseEther } from 'viem';
-import { baseSepolia } from 'viem/chains';
-import BuyMeACoffeeABI from '../../_contracts/BuyMeACoffeeABI';
-import { BUY_MY_COFFEE_CONTRACT_ADDR } from '../../config';
+import { encodeFunctionData, parseUnits } from 'viem';
+import { baseSepolia, sepolia } from 'viem/chains';
+import playerAToken from '../../_contracts/PlayerAToken.json';
+import { BAL_VAULT_ADDR, PLAYER_A_CONTRACT_ADDR } from '../../config';
+import abi from '../../_contracts/tokenStable';
+import { STABLE_CONTRACT_ADDR } from '../../config';
 import type { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
 
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
@@ -16,19 +18,19 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   }
 
   const data = encodeFunctionData({
-    abi: BuyMeACoffeeABI,
-    functionName: 'buyCoffee',
-    args: [parseEther('1'), 'Coffee all day!'],
+    abi: abi,
+    functionName: 'approve',
+    args: [BAL_VAULT_ADDR, parseUnits('100', 6)],
   });
 
   const txData: FrameTransactionResponse = {
-    chainId: `eip155:${baseSepolia.id}`,
+    chainId: `eip155:${sepolia.id}`,
     method: 'eth_sendTransaction',
     params: {
       abi: [],
       data,
-      to: BUY_MY_COFFEE_CONTRACT_ADDR,
-      value: parseEther('0.00004').toString(), // 0.00004 ETH
+      to: '0x1c7d4b196cb0c7b01d743fbc6116a902379c7238',
+      value: '0',
     },
   };
   return NextResponse.json(txData);

@@ -2,7 +2,7 @@
  * This ABI is trimmed down to just the functions we expect to call for the
  * sake of minimizing bytes downloaded.
  */
-const abi = [
+const coffeeAbi = [
   { type: 'constructor', inputs: [], stateMutability: 'nonpayable' },
   { type: 'receive', stateMutability: 'payable' },
   {
@@ -123,4 +123,4 @@ const abi = [
   { type: 'error', name: 'OnlyOwner', inputs: [] },
 ] as const;
 
-export default abi;
+export default coffeeAbi;
