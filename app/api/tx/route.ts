@@ -17,7 +17,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     return new NextResponse('Message not valid', { status: 500 });
   }
 
-  const value = BigInt(numberToHex(100e6, { size: 32 }));
+  const value = BigInt(numberToHex(100e6, { size: 64 }));
 
   const data = encodeFunctionData({
     abi: abi,
