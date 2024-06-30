@@ -29,7 +29,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     params: {
       abi: [],
       data,
-      to: STABLE_CONTRACT_ADDR,
+      to: '0x1c7d4b196cb0c7b01d743fbc6116a902379c7238',
       value: '0x0',
     },
   };
