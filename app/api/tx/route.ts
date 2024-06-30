@@ -18,12 +18,12 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   }
 
   const value = parseUnits('100', 6);
-  let hexValue = BigInt(toHex(value, { size: 32 }).slice(2));
+  //let hexValue = BigInt(toHex(value, { size: 32 }).slice(2));
 
   const data = encodeFunctionData({
     abi: abi,
     functionName: 'approve',
-    args: [BAL_VAULT_ADDR, hexValue],
+    args: [BAL_VAULT_ADDR, value],
   });
 
   const txData: FrameTransactionResponse = {
