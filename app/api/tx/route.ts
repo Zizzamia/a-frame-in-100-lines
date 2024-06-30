@@ -29,7 +29,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const txData = {
     chainId: `eip155:${sepolia.id}`,
     method: 'eth_sendTransaction',
-    attribution: false,
     params: {
       abi: [],
       data,
