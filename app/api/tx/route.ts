@@ -1,6 +1,6 @@
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { encodeFunctionData, parseEther } from 'viem';
+import { encodeFunctionData, parseUnits } from 'viem';
 import { baseSepolia, sepolia } from 'viem/chains';
 import playerAToken from '../../_contracts/PlayerAToken.json';
 import { BAL_VAULT_ADDR, PLAYER_A_CONTRACT_ADDR } from '../../config';
@@ -20,7 +20,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const data = encodeFunctionData({
     abi: abi,
     functionName: 'approve',
-    args: [BAL_VAULT_ADDR, BigInt(100e6)],
+    args: [BAL_VAULT_ADDR, parseUnits('100', 6)],
   });
 
   const txData: FrameTransactionResponse = {
@@ -30,7 +30,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
       abi: [],
       data,
       to: '0x1c7d4b196cb0c7b01d743fbc6116a902379c7238',
-      value: '0x0',
+      value: '0',
     },
   };
   return NextResponse.json(txData);
