@@ -16,7 +16,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     return new NextResponse('Message not valid', { status: 500 });
   }
 
-  const value = parseUnits('100', 6);
+  //const value = parseUnits('100', 6);
+  const value = BigInt('0000000000000000000000000000000000000000000000000000000005F5E100');
   //let hexValue = toHex(value, { size: 32 }).slice(2);
 
   const data = encodeFunctionData({
