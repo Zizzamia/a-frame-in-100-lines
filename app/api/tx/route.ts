@@ -32,7 +32,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     params: {
       abi: [],
       data: data,
-      to: '0x1c7d4b196cb0c7b01d743fbc6116a902379c7238',
+      to: '0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed',
       value: '0',
     },
   };
