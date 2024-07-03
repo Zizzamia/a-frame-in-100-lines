@@ -27,7 +27,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   });
 
   const txData: FrameTransactionResponse = {
-    chainId: `eip155:${sepolia.id}`,
+    chainId: `eip155:${base.id}`,
     method: 'eth_sendTransaction',
     params: {
       abi: [],
