@@ -1,7 +1,7 @@
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { encodeFunctionData, parseUnits, toHex } from 'viem';
-import { baseSepolia, sepolia } from 'viem/chains';
+import { base, baseSepolia, sepolia } from 'viem/chains';
 import { BAL_VAULT_ADDR } from '../../config';
 import abi from '../../_contracts/tokenStable';
 import { STABLE_CONTRACT_ADDR } from '../../config';
@@ -23,11 +23,11 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const data = encodeFunctionData({
     abi: abi,
     functionName: 'approve',
-    args: [BAL_VAULT_ADDR, parseUnits('100', 6)],
+    args: [BAL_VAULT_ADDR, parseUnits('100', 18)],
   });
 
   const txData: FrameTransactionResponse = {
-    chainId: `eip155:${sepolia.id}`,
+    chainId: `eip155:${base.id}`,
     method: 'eth_sendTransaction',
     params: {
       abi: [],
