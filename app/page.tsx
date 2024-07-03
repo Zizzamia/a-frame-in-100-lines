@@ -23,7 +23,7 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `https://raw.githubusercontent.com/Aheesh/buidl-portfolio/main/public/IRLChess-Sepolia.webp`,
+    src: `${NEXT_PUBLIC_URL}/game1.webp`,
     aspectRatio: '1:1',
   },
   input: {
