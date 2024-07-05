@@ -1,6 +1,6 @@
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { encodeFunctionData, parseUnits, toHex } from 'viem';
+import { encodeFunctionData, parseEther, parseUnits, toHex } from 'viem';
 import { base, baseSepolia, sepolia } from 'viem/chains';
 import { BAL_VAULT_ADDR } from '../../config';
 import abi from '../../_contracts/tokenStable';
@@ -16,14 +16,14 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     return new NextResponse('Message not valid', { status: 500 });
   }
 
-  const value = parseUnits('100', 18);
-  let hexValue = value.toString(16);
-  hexValue = hexValue.padStart(64, '0'); // Pad to make it 64 character long hex
+  const value = parseEther('100');
+  // let hexValue = value.toString(16);
+  // hexValue = hexValue.padStart(64, '0'); // Pad to make it 64 character long hex
 
   const data = encodeFunctionData({
     abi: abi,
     functionName: 'approve',
-    args: [BAL_VAULT_ADDR, BigInt(hexValue)],
+    args: [BAL_VAULT_ADDR, value],
   });
 
   const txData: FrameTransactionResponse = {
