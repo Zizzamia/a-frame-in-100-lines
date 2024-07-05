@@ -30,7 +30,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     chainId: `eip155:${base.id}`,
     method: 'eth_sendTransaction',
     params: {
-      abi: [],
+      abi: abi,
       data: data,
       to: '0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed',
       value: '0',
