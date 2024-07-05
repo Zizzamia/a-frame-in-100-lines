@@ -18,7 +18,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
 
   const value = parseUnits('100', 18);
   let hexValue = value.toString(16);
-  hexValue = hexValue.padStart(64, '0');
+  hexValue = hexValue.padStart(64, '0'); // Pad to make it 64 character long hex
 
   const data = encodeFunctionData({
     abi: abi,
@@ -26,10 +26,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     args: [BAL_VAULT_ADDR, BigInt(hexValue)],
   });
 
-  const txData = {
+  const txData: FrameTransactionResponse = {
     chainId: `eip155:${base.id}`,
     method: 'eth_sendTransaction',
-    attribution: false,
     params: {
       abi: abi,
       data: data,
