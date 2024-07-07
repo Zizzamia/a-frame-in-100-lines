@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../config';
@@ -14,7 +16,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   //QueryBatchSwap to get the expected amount of tokens Out for confirmation
   const providerApiKey = process.env.BASE_PROVIDER_API_KEY;
-  console.log('providerApiKey', providerApiKey);
+  console.log('providerApiKey Value :', providerApiKey);
 
   const sdk = new BalancerSDK({
     network: Network.BASE,
