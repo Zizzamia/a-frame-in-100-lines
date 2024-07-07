@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../config';
 import { get } from 'http';
 import { BalancerSDK, Network, SwapType } from '@balancer-labs/sdk';
+import { ethers } from 'ethers';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
@@ -16,7 +17,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   //QueryBatchSwap to get the expected amount of tokens Out for confirmation
   const providerApiKey = process.env.BASE_PROVIDER_API_KEY;
-  console.log('providerApiKey Value :', providerApiKey);
 
   const sdk = new BalancerSDK({
     network: Network.BASE,
@@ -43,13 +43,15 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     assets,
   });
   console.log('queryInfo', queryInfo);
+  const absValue = Math.abs(Number(ethers.utils.formatEther(queryInfo[1])));
+  console.log('queryInfo', absValue);
 
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
           action: 'tx',
-          label: `Confirm ${queryInfo} Player A Swap`,
+          label: `Confirm ${absValue} Player A Swap`,
           target: `${NEXT_PUBLIC_URL}/api/swap`,
         },
         { action: 'link', label: 'Cancel Transaction', target: `${NEXT_PUBLIC_URL}` },
