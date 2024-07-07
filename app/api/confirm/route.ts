@@ -14,6 +14,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   //QueryBatchSwap to get the expected amount of tokens Out for confirmation
   const providerApiKey = process.env.BASE_PROVIDER_API_KEY;
+  console.log('providerApiKey', providerApiKey);
 
   const sdk = new BalancerSDK({
     network: Network.BASE,
@@ -39,6 +40,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     swaps,
     assets,
   });
+  console.log('queryInfo', queryInfo);
 
   return new NextResponse(
     getFrameHtmlResponse({
