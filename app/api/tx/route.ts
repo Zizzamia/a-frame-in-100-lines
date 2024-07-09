@@ -4,7 +4,6 @@ import { encodeFunctionData, parseEther, parseUnits, toHex, pad } from 'viem';
 import { base, baseSepolia, sepolia } from 'viem/chains';
 import { BAL_VAULT_ADDR } from '../../config';
 import abi from '../../_contracts/tokenStable';
-import { STABLE_CONTRACT_ADDR } from '../../config';
 import type { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
 
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
@@ -24,6 +23,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     args: [BAL_VAULT_ADDR, value],
   });
 
+  //TODO check if the wallet has enough balance to send the transaction, check the balance of the wallet and request permission only for required amount.
   const txData: FrameTransactionResponse = {
     chainId: `eip155:${base.id}`,
     method: 'eth_sendTransaction',
