@@ -9,6 +9,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const address = (body.untrustedData as any).address;
   console.log('address', address);
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYMAR_ONCHAIN_KIT' });
+  console.log('message', message);
 
   if (!isValid) {
     return new NextResponse('Message not valid', { status: 500 });
