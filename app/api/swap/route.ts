@@ -5,6 +5,7 @@ import { NEXT_PUBLIC_URL } from '../../config';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
+  console.log('body', body);
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYMAR_ONCHAIN_KIT' });
 
   if (!isValid) {
