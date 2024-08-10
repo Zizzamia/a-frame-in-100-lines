@@ -22,6 +22,8 @@ const frameMetadata = getFrameMetadata({
     text: 'Tell me a story',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+  isOpenFrame: true,
+  accepts: { xmtp: '2024-02-01' },
 });
 
 export const metadata: Metadata = {
